@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+body {
+  background: url('/bg.jpg') no-repeat center center fixed;
+  background-color: #78a3f2;
+  font-family: "Times New Roman", times, serif;
+}
+
+header {
+  background: url('/logo.png') top center no-repeat;
+  background-size: contain;
+  width: 60%;
+  margin: 40px auto 0 auto;
+  max-width: 90vw;
+  text-align: center;
+  padding: 50px 0 0 0;
+}
+
+#bubble {
+  font-size: 1.4em;
+  line-height: 1.4em;
+  display: inline-block;
+  background-color: #ece9d8;
+  padding: 20px 50px;
+  border-radius: 500px;
+  border: 1px solid #000;
+  margin: 20% 0 0 0;
+  -webkit-box-shadow: 3px 3px 0px 3px #000000; 
+  box-shadow: 3px 3px 0px 3px #000000;
+}
+
+#mobile-tip {
+  display: none;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 600px) {
+  #mobile-tip {
+    display: inline-block;
+  }
+  header {
+    width: 100%;
+  }
+  .container {
+    width: 95vw;
+    margin-top: 2vh;
+  }
+  .app label {
+    font-size: 1.4em;
+  }
+  .app, .filling-empty-space-childs {
+    width: 35vw;
+  }
+  input[type=range]::-webkit-slider-thumb {
+      height: 25px;
+      width: 25px;
+      border-radius: 50%;
+      margin-top: -11px;
+  }
+  .app a img {
+    -webkit-filter: none;
+            filter: none;
+  }
+}
