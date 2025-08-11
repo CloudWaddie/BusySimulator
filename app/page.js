@@ -7,6 +7,8 @@ export default function Home() {
   const assetPrefix = process.env.NEXT_PUBLIC_ASSET_PREFIX || '';
   const [apps, setApps] = useState([]);
   const playerRefs = useRef({});
+  const appsRef = useRef(apps);
+  appsRef.current = apps;
 
   // Effect to fetch app configuration
   useEffect(() => {
@@ -30,28 +32,29 @@ export default function Home() {
         if (!playerRefs.current[app.id]) {
           const sound = new Howl({
             src: [`${assetPrefix}/sounds/${app.sound}`],
-            loop: false,
+            loop: false
           });
 
           playerRefs.current[app.id] = {
             sound: sound,
             timeoutId: null,
-            playLoop: function(appState, updateApp) {
+            playLoop: function() {
+              const appState = appsRef.current.find(a => a.id === app.id);
+              if (!appState || !appState.isPlaying) {
+                this.stopLoop();
+                return;
+              }
+
               const adjustedSpeed = Math.pow(parseInt(appState.speed) + 15, 1.2) / 10;
               const rand = Math.round(Math.random() * (500 * adjustedSpeed - 200 * adjustedSpeed) + 200 * adjustedSpeed);
 
               this.timeoutId = setTimeout(() => {
                 if (playerRefs.current[app.id]?.sound.playing()) {
-                    // The sound might be finishing from the last play, stop it before playing again
                     playerRefs.current[app.id]?.sound.stop();
                 }
                 playerRefs.current[app.id]?.sound.play();
-                const newCount = appState.notificationCount + 1;
-                updateApp(app.id, { notificationCount: newCount });
-                this.playLoop(
-                    {...appState, notificationCount: newCount}, 
-                    updateApp
-                );
+                updateApp(app.id, { notificationCount: appState.notificationCount + 1 });
+                this.playLoop();
               }, rand);
             },
             stopLoop: function() {
@@ -63,13 +66,12 @@ export default function Home() {
       });
     }
 
-    // Cleanup on unmount
     return () => {
       Object.values(playerRefs.current).forEach(player => {
         player.stopLoop();
       });
     };
-  }, [apps, assetPrefix]);
+  }, [apps.length, assetPrefix]);
 
   const updateApp = (id, updates) => {
     setApps(prevApps =>
@@ -82,17 +84,15 @@ export default function Home() {
     if (!app) return;
 
     const player = playerRefs.current[id];
-    if (app.isPlaying) {
-      player.stopLoop();
-      updateApp(id, { isPlaying: false, notificationCount: 0 });
-    } else {
-      const newCount = 1;
-      updateApp(id, { isPlaying: true, notificationCount: newCount });
+    const isPlaying = !app.isPlaying;
+
+    updateApp(id, { isPlaying, notificationCount: isPlaying ? 1 : 0 });
+
+    if (isPlaying) {
       player.sound.play();
-      player.playLoop(
-        { ...app, isPlaying: true, notificationCount: newCount },
-        updateApp
-      );
+      setTimeout(() => player.playLoop(), 0);
+    } else {
+      player.stopLoop();
     }
   };
 
