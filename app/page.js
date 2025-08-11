@@ -1,5 +1,5 @@
 export default function Home() {
-  const assetPrefix = process.env.ASSET_PREFIX;
+  const assetPrefix = process.env.NEXT_PUBLIC_ASSET_PREFIX || '';
 
   return (
     <header style={{background: `url('${assetPrefix}/logo.png') top center no-repeat`, backgroundSize: 'contain'}}>
