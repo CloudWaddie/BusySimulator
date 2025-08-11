@@ -1,19 +1,21 @@
 @import "tailwindcss";
 
 body {
-  background: url('/bg.jpg') no-repeat center center fixed;
   background-color: #78a3f2;
   font-family: "Times New Roman", times, serif;
 }
 
 header {
-  background: url('/logo.png') top center no-repeat;
-  background-size: contain;
   width: 60%;
   margin: 40px auto 0 auto;
   max-width: 90vw;
   text-align: center;
   padding: 50px 0 0 0;
+}
+
+header h2 {
+  font-weight: bold;
+  font-style: italic;
 }
 
 #bubble {
