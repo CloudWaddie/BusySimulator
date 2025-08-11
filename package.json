@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "cross-env NEXT_PUBLIC_ASSET_PREFIX='/BusySimulator' next build",
     "start": "next start",
     "lint": "next lint",
     "predeploy": "npm run build && touch out/.nojekyll",
@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "cross-env": "^10.0.0",
     "gh-pages": "^6.3.0",
     "tailwindcss": "^4"
   }
