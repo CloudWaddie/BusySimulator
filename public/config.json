@@ -4,5 +4,59 @@
       "id": "google-calendar",
       "icon": "google-cal.png",
       "sound": "google-cal.mp3"
+    },
+    {
+      "name": "Slack",
+      "id": "slack",
+      "icon": "slack.png",
+      "sound": "slack.mp3"
+    },
+    {
+      "name": "Microsoft Teams",
+      "id": "teams",
+      "icon": "teams.png",
+      "sound": "teams.mp3"
+    },
+    {
+      "name": "Google Chat",
+      "id": "google-chat",
+      "icon": "gchat.png",
+      "sound": "gchat.mp3"
+    },
+    {
+      "name": "Discord",
+      "id": "discord",
+      "icon": "discord.png",
+      "sound": "discord.mp3"
+    },
+    {
+      "name": "Apple Mail",
+      "id": "apple-mail",
+      "icon": "apple-mail.png",
+      "sound": "applemail.mp3"
+    },
+    {
+      "name": "Outlook",
+      "id": "outlook",
+      "icon": "outlook.png",
+      "sound": "outlook.mp3"
+    },
+    {
+      "name": "iMessage",
+      "id": "imessage",
+      "icon": "imessage.png",
+      "sound": "imessage.mp3"
+    },
+    {
+      "name": "Skype",
+      "id": "skype",
+      "icon": "skype.png",
+      "sound": "skype.mp3"
+    },
+    {
+      "name": "Vibrating Phone",
+      "id": "vibrating-phone",
+      "icon": "phone.png",
+      "sound": "phone.mp3"
     }
   ]
