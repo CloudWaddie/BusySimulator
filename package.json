@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "cross-env NEXT_PUBLIC_ASSET_PREFIX='/BusySimulator' next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "predeploy": "npm run build && touch out/.nojekyll",
