@@ -2,7 +2,7 @@
   "name": "busy-simulator",
   "version": "0.1.0",
   "homepage": "https://CloudWaddie.github.io/BusySimulator/",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
