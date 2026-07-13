@@ -2,5 +2,5 @@
 
 This is still a massive work in progress! It is currently as good as the original however.
 
-Credits:
+Credits: 
 BusySimulator.com for idea, logo, and styling
